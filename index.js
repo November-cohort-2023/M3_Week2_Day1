@@ -84,17 +84,48 @@ DELETE:
 // READ
 
 // .find(): gets All my documents in a collection
+// .find() method ALWAYS returns an array
 
-Movie.find({rate:9.2})
+/* Movie.find({rate:10})
 .then((result)=>{
     console.log(result)
-})
+}) */
 
 
 
+// .findOne(): finds 1 document based on a query
+// .findOne ALWAYS returns an object
+
+/*  Movie.findOne({title:"The Dark Knight"})
+ .then((result)=>{
+    console.log(result)
+ }) */
 
 
+ /* 
+ Exercise 1:
+
+    Get the movie with the director "Milos Forman"
+
+    Console.log() the entire object
+ */
+
+
+/*     Movie.findOne({director:"Milos Forman"})
+    .then((res)=>{
+        console.log(res)
+    })
+ */
   
+//  findById()
+
+    Movie.findById('65f12531dc4084e350bd5f5c')
+    .then((res)=>{
+        console.log(res)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
 
 
   app.listen(5005)
