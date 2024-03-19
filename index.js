@@ -25,14 +25,21 @@ mongoose
 //   model() takes two arguments:
 //          1. Name of the Model
 //          2. Schema: outline of my object. How many key value pairs and the data types
-  const Movie = mongoose.model('Movie',{
-    title: String,
-    year:Number,
-    director:String,
-    duration:String,
-    genre:Array,
-    rate:Number
-  })
+
+
+const movieSchema = new mongoose.Schema(
+    {
+        title: String,
+        year:Number,
+        director:String,
+        duration:String,
+        genre:Array,
+        rate:Number
+      }
+)
+
+
+  const Movie = mongoose.model('Movie',movieSchema)
 
 
 
@@ -196,15 +203,53 @@ DELETE:
     })  */
 
 
-    Movie.findByIdAndUpdate('65f12531dc4084e350bd5f50',{duration:"10h 1min"})
+/*     Movie.findByIdAndUpdate('65f12531dc4084e350bd5f50',{duration:"10h 1min"})
     .then((res)=>{
         console.log(res)
     })
     .catch(err=>{
         console.log(err)
     })
+ */
 
 
 
+/*     Movie.deleteOne({title:"The Godfather"})
+    .then((res)=>{
+        console.log(res)
+    })
+    .catch(err=>{
+        console.log(err)
+    }) */
+
+
+/*     Movie.deleteMany({title:{$regex:"Movie"}})   
+    .then((res)=>{
+        console.log(res)
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+ */
+
+
+ /*    Movie.findByIdAndDelete("65f12531dc4084e350bd5f52")
+    .then((res)=>{
+        console.log(res)
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+ */
+
+
+
+    Movie.find({genre:{$size:0}})
+    .then((res)=>{
+        console.log(res)
+    })
+    .catch(err=>{
+        console.log(err)
+    })
 
   app.listen(5005)
