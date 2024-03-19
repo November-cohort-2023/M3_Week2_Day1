@@ -32,8 +32,9 @@ mongoose
     duration:String,
     genre:Array,
     rate:Number
-
   })
+
+
 
   //CRUD
 
@@ -47,7 +48,7 @@ READ:
 
 .findOne({title:"Barbie"}): fetches 1 document based on the query given in the argument. Will return barbie movie document
 
-.findOneById('65f12531dc4084e350bd5f4f'): fetches 1 document based on the id given in the arguement
+.findById('65f12531dc4084e350bd5f4f'): fetches 1 document based on the id given in the arguement
 
 
 
@@ -60,7 +61,7 @@ CREATE:
 
 UPDATE:
 
-.updateOne({title:"Star Wars"}, {rating:9}): will find the movie with the query from the first arugment and change the rating to 9. 
+.findOneAndUpdate({title:"Star Wars"}, {rating:9}): will find the movie with the query from the first arugment and change the rating to 9. 
 
 .updateMany({director:"George Lucas"}, {rating:9}): will find all the movies with the director being george lucas and change the rating to 9. 
 
@@ -119,13 +120,91 @@ DELETE:
   
 //  findById()
 
-    Movie.findById('65f12531dc4084e350bd5f5c')
+/*     Movie.findById('65f12531dc4084e350bd5f5c')
     .then((res)=>{
         console.log(res)
     })
     .catch((err)=>{
         console.log(err)
     })
+ */
+
+
+// CREATE
+
+// create() method used for creating a new document
+
+/*     Movie.create({
+        title:"Diogo's Movie",
+        director:"Jorge",
+        year:2024,
+        duration:"2h",
+        genre:["Thriller","Comedy"],
+        rate:9.9
+        })
+    .then((res)=>{
+        console.log(res)
+    })
+    .catch(err=>{
+        console.log(err)
+    }) */
+
+
+
+    /* Movie.insertMany([
+        {
+            title:"Juans's Movie",
+            director:"Juan",
+            year:2024,
+            duration:"2h",
+            genre:["Thriller","Comedy"],
+            rate:9.2
+        },
+        {
+            title:"Monica's Movie",
+            director:"Monica",
+            year:2024,
+            duration:"2h",
+            genre:["Thriller","Comedy"],
+            rate:9.2
+            }
+    ])
+    .then((res)=>{
+        console.log(res)
+    })
+    .catch(err=>{
+        console.log(err)
+    }) */
+
+
+/* 
+    Movie.findOneAndUpdate({title:"The Godfather"},{year:3000},{new:true})
+    .then((res)=>{
+        console.log(res)
+    })
+    .catch(err=>{
+        console.log(err)
+    }) */
+    
+
+   /*  Movie.updateMany({rate:9.9},{rate:10000})
+    .then((res)=>{
+        console.log(res)
+    })
+    .catch(err=>{
+        console.log(err)
+    })  */
+
+
+    Movie.findByIdAndUpdate('65f12531dc4084e350bd5f50',{duration:"10h 1min"})
+    .then((res)=>{
+        console.log(res)
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+
+
 
 
   app.listen(5005)
