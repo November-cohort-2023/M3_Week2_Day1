@@ -2,6 +2,8 @@ const express = require('express')
 
 const app = express()
 
+const Movie = require("./models/Movie.model")
+
 const mongoose = require('mongoose')
 
 /* 
@@ -27,19 +29,6 @@ mongoose
 //          2. Schema: outline of my object. How many key value pairs and the data types
 
 
-const movieSchema = new mongoose.Schema(
-    {
-        title: String,
-        year:Number,
-        director:String,
-        duration:String,
-        genre:Array,
-        rate:Number
-      }
-)
-
-
-  const Movie = mongoose.model('Movie',movieSchema)
 
 
 
@@ -141,20 +130,20 @@ DELETE:
 
 // create() method used for creating a new document
 
-/*     Movie.create({
-        title:"Diogo's Movie",
+    Movie.create({
+        title:"moviex                             ",
         director:"Jorge",
-        year:2024,
+        year:999999,
         duration:"2h",
-        genre:["Thriller","Comedy"],
-        rate:9.9
+        genre:["Thriller","Comedy",100,true],
+        rate:10
         })
     .then((res)=>{
         console.log(res)
     })
     .catch(err=>{
         console.log(err)
-    }) */
+    })
 
 
 
@@ -244,12 +233,12 @@ DELETE:
 
 
 
-    Movie.find({genre:{$size:0}})
+/*     Movie.find({genre:{$size:0}})
     .then((res)=>{
         console.log(res)
     })
     .catch(err=>{
         console.log(err)
-    })
+    }) */
 
   app.listen(5005)
